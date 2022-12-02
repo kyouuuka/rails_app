@@ -19,6 +19,6 @@ class InstasController < ApplicationController
     
     private
     def insta_params
-        params.permit(:body)
+        params.permit(:body,:image)
     end
 end
