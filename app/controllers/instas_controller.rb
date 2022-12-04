@@ -23,6 +23,25 @@ class InstasController < ApplicationController
         @insta = Insta.find(params[:id])
     end
 
+    def edit
+        @insta = Insta.find(params[:id])
+    end
+
+    def update
+        insta = Insta.find(params[:id])
+        if insta.update(insta_params)
+            redirect_to :action => "show", :id => insta.id
+        else
+            redirect_to :action => "new"
+        end
+    end
+
+    def destroy
+        insta = Insta.find(params[:id])
+        insta.destroy
+        redirect_to action: :index
+    end
+    
     private
     def insta_params
         params.permit(:body,:image)

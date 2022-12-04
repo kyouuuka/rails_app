@@ -5,5 +5,5 @@
     <p><%= @insta.created_at %></p>
     <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
 </div>
-
+<%= link_to "編集する", edit_insta_path(@insta.id) %>
 <%= link_to "一覧に戻る", insta_path %>

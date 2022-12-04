@@ -1,0 +1,6 @@
+<%= form_with url: instas_path do |form| %>
+    <%= form.label :body %>
+    <%= form.text_field :body, :size => 140 %> 
+    <%= form.submit "編集する" %>
+    <%= link_to "一覧に戻る", insta_path %>
+<% end %>
