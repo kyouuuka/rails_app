@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root 'hello#index'
   get 'instas/my' => 'instas#my'
   resources :instas
+  resources :comments, only: [:create]
 end

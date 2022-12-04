@@ -7,4 +7,5 @@ has_many :instas, dependent: :destroy
 validates :name, presence: true 
 validates :profile, length: { maximum: 200 }
 mount_uploader :image, ImageUploader
+has_many :comments, dependent: :destroy
 end

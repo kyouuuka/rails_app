@@ -7,3 +7,22 @@
 </div>
 <%= link_to "編集する", edit_insta_path(@insta.id) %>
 <%= link_to "一覧に戻る", insta_path %>
+<div class="comment-wrapper">
+    <p>コメント一覧</p>
+    <% @comments.each do |c| %>
+        <div>
+            <%= c.user.email unless c.user.blank? %>
+            <br>
+            <%= c.content %>
+        </div>
+            <br>
+    <% end %>
+    <% if user_signed_in? %>
+        <%= form_with(model: [@insta, @comment], local: true) do |f| %>
+            <%= f.text_area :content %>
+            <%= button_tag type: "submit" do %>
+                <i class="far fa-comments"></i> コメントする
+            <% end %>
+        <% end %>
+    <% end %>
+</div>
