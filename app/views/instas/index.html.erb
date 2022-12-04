@@ -1,1 +1,14 @@
-<%= image_tag t.image_url, size: "250x200" if t.image? %
+<h1>GeekInstagram</h1>
+<h3>投稿一覧</h3>
+<%= link_to "新規投稿へ", new_insta_path %>
+<div class="instas-container">
+    <% @instas.each do |t| %>
+    <div class="insta">
+<%= image_tag t.image_url, size: "250x200" if t.image? %>
+        <%= t.body %>
+        <%= t.created_at %>
+        <%= t.user.email %>
+        <%= link_to "詳細へ", insta_path(t.id) %>
+    </div>
+    <% end %>
+</div>

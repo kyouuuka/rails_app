@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   get 'hello/index' => 'hello#index'
   root 'hello#index'
   get 'instas/my' => 'instas#my'
-  post 'instas' => 'instas#create'
   resources :instas
 end
