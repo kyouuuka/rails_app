@@ -6,4 +6,5 @@ devise :database_authenticatable, :registerable,
 has_many :instas, dependent: :destroy 
 validates :name, presence: true 
 validates :profile, length: { maximum: 200 }
+mount_uploader :image, ImageUploader
 end

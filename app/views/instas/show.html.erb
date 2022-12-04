@@ -3,6 +3,7 @@
 <div class="insta">
     <p><%= @insta.body %></p>
     <p><%= @insta.created_at %></p>
+    <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
 </div>
 
 <%= link_to "一覧に戻る", insta_path %>
