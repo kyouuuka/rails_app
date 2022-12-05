@@ -3,6 +3,14 @@ class InstasController < ApplicationController
 
     def index
         @instas = Insta.all
+        @comment = Comment.new
+        if params[:search] == nil
+            @instas= Insta.all
+        elsif params[:search] == ''
+            @instas= Insta.all
+        else
+            @instas = Insta.where("body LIKE ? ",'%' + params[:search] + '%')
+        end
     end
 
     def new
@@ -21,7 +29,6 @@ class InstasController < ApplicationController
 
     def show
         @insta = Insta.find(params[:id])
-
     end
 
     def edit

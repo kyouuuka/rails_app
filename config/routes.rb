@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'instas/my' => 'instas#my'
   resources :instas do
     resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create]
   end
+  resources :relationships, only: [:create, :destroy]
 end

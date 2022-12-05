@@ -3,6 +3,7 @@
 <div class="insta">
     <p><%= @insta.body %></p>
     <p><%= @insta.created_at %></p>
+    <a href="/users/<%= @insta.user.id %>"><%= @insta.user.name %></a>
     <% if user_signed_in? %>
         <% if current_user.already_liked?(@insta) %>
             <%= link_to insta_like_path(@insta), method: :delete do %>
@@ -18,4 +19,4 @@
     <% end %>
 </div>
 <%= link_to "編集する", edit_insta_path(@insta.id) %>
-<%= link_to "一覧に戻る", insta_path %>
+<%= link_to "一覧に戻る", instas_path %>
