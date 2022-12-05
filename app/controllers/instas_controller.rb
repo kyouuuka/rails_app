@@ -21,8 +21,7 @@ class InstasController < ApplicationController
 
     def show
         @insta = Insta.find(params[:id])
-        @comments = @insta.comments
-        @comment = Comment.new
+
     end
 
     def edit

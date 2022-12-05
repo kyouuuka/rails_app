@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'hello/index' => 'hello#index'
   root 'hello#index'
   get 'instas/my' => 'instas#my'
-  resources :instas
-  resources :comments, only: [:create]
+  resources :instas do
+    resources :likes, only: [:create, :destroy]
+  end
 end
