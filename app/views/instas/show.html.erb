@@ -3,19 +3,18 @@
 <div class="insta">
     <p><%= @insta.body %></p>
     <p><%= @insta.created_at %></p>
-    <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
     <% if user_signed_in? %>
         <% if current_user.already_liked?(@insta) %>
             <%= link_to insta_like_path(@insta), method: :delete do %>
-                <p>いいねを取り消す</p><%= @insta.likes.count %>
+                <i class="fas fa-heart"></i><%= @insta.likes.count %>           
             <% end %>
         <% else %>
             <%= link_to insta_likes_path(@insta), method: :post do %>
-                <p>いいね</p><%= @insta.likes.count %>
+                <i class="far fa-heart"></i><%= @insta.likes.count %>            
             <% end %>
         <% end %>
     <% else %>
-        <p>いいねの数 = </p><%= @insta.likes.count %>
+        <i class="far fa-heart"></i><%= @insta.likes.count %>    
     <% end %>
 </div>
 <%= link_to "編集する", edit_insta_path(@insta.id) %>
