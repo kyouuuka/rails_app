@@ -1,12 +1,14 @@
-<h3>新規投稿</h3>
-<%= form_with url: instas_path do |form| %>
-    <div class="field">
-        <%= form.text_field :body, "本文" %>
-        <%= form.submit %>
-    </div>
-    <div class="field">
-        <%= form.label :image, "画像" %>
-        <%= form.file_field :image, "画像" %>
-    </div>
-<% end %>
-<%= link_to "投稿一覧に戻る", instas_path %>
+<div class="post-container">
+    <p class="title">新規投稿</p>
+    <%= form_with url: instas_path do |form| %>
+    <%= form.text_field :body,size: 140%>            <br>
+            <%= form.label :image, "画像" %>
+            <br>
+            <%= form.file_field :image %>
+            <br>
+            <%= form.submit "送信" %>
+    <% end %>
+    <%= link_to "投稿一覧に戻る", instas_path %>
+</div>
+
+
