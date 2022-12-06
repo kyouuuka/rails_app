@@ -9,11 +9,21 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header>
+      <h1>GeekInstagram</h1>
+      <div class="header-list">
+        <ul>
+        <li><%= link_to "ホーム", hello_index_path %></li>
+        <li><%= link_to "新規投稿", new_insta_path %></li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>Copyright © GeekSalon All Rights Reserved.</p>
+    </footer>
   </body>
 </html>
-
-
-
