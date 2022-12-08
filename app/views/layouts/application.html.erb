@@ -17,11 +17,15 @@
         <ul>
         <li><%= link_to "ホーム", hello_index_path %></li>
         <li><%= link_to "新規投稿", new_insta_path %></li>
+        <li><%= link_to "投稿一覧", instas_path %></li>
+
         <% if user_signed_in? %>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to "ログイン", user_session_path %></li>
           <li><%= link_to "サインアップ", new_user_registration_path %></li>
+          <li><%= link_to "マイページへ", edit_user_registration_path %></li>
+
         <% end %>
         </ul>
       </div>

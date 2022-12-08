@@ -1,16 +1,18 @@
-<h3>検索</h3>
+<div class="search">
+    <h3>検索</h3>
     <%= form_tag({controller:"instas",action:"index"}, method: :get) do %>
         <%= text_field_tag :search %>
         <%= submit_tag '検索する'  %>
     <% end %>
+</div>
 <div class="instas-container container">
     <div class="row">
-        <div class="col-sm-4 col-12">
+        <div class="col-sm-3 col-12">
             <h3>投稿一覧</h3>
                 <% @instas.each do |t| %>
                     <div class="insta">
                         <%= image_tag t.image_url, size: "250x200" if t.image? %>
-                        <%= image_tag t.user.image_url, size: "250x200" if t.user.image? %>
+                        <%= image_tag t.user.image_url, size: "100x100" if t.user.image? %>
                         <div class="main-box">
                             <div class="left-container"><%= t.body %></div>
                             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
@@ -34,12 +36,9 @@
                             <% end %>    
                         </div>
                     </div>
-                    <p class="time"><%= t.created_at %></p>
                 <% end %>
-            <%= link_to "新規投稿へ", new_insta_path %>
+            <% if user_signed_in? %>
+<% end %>
         </div>
     </div>
 </div>
-<% if user_signed_in? %>
-    <%= link_to "マイページへ", user_path(current_user.id) %>
-<% end %>

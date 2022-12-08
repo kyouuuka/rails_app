@@ -33,6 +33,15 @@ input[type="password"] {
     border-right: none;
     background-color: #cbcfd0;
 }
+input[type="text"] {
+    width: 95%;
+    height: 40px;
+    border-bottom:solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #cbcfd0;
+}
 input[type="submit"] {
     width: 95%;
     height: 40px;
@@ -68,4 +77,11 @@ input[type="email"]:focus {
 input[type="password"]:focus {
     outline: solid 1px #6fc4e1;
     background-color: #6fc4e1;
+}
+input[type="text"]:focus {
+    outline: solid 1px #6fc4e1;
+    background-color: #6fc4e1;
+}
+.gazou{
+    border-radius:80%;
 }

@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!
 
     def create
-    insta = insta.find(params[:insta_id])
+    insta = Insta.find(params[:insta_id])
     comment = insta.comments.build(comment_params) 
     comment.user_id = current_user.id
     if comment.save
@@ -20,4 +20,4 @@ private
         params.require(:comment).permit(:content)
     end
 end
-end
+

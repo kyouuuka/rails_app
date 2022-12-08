@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<body>
-  <meta charset="UTF-8">
-  <title>:focus</title>
-  <link rel="stylesheet" href="index.css">
-</head><div class="login-container">
-    <p class="login">Instagramにログイン</p>
-  <p>※登録したメールアドレスとパスワードを入力してください。</p>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, placeholder: "メール", autofocus: true, autocomplete: "email" %>
-      <br>
-      <br>
-      <%= f.password_field :password, placeholder: "パスワード", autocomplete: "off" %>
-    <% if devise_mapping.rememberable? -%><% end -%>
-      <%= f.submit "ログイン" %>
-  <% end %>
-<%= render "users/shared/links" %>
-</div>
-</body>
+  <body>
+    <head>
+    <meta charset="UTF-8">
+    <title>:focus</title>
+    <link rel="stylesheet" href="index.css">
+    </head>
+    <div class="login-container">
+      <p class="login">Instagramにログイン</p>
+      <p>※登録したメールアドレスとパスワードを入力してください。</p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, placeholder: "メール", autofocus: true, autocomplete: "email" %>
+        <br>
+        <br>
+        <%= f.password_field :password, placeholder: "パスワード", autocomplete: "off" %>
+        <% if devise_mapping.rememberable? -%><% end -%>
+        <%= f.submit "ログイン" %>
+      <% end %>
+      <%= render "users/shared/links" %>
+    </div>
+  </body>
 </html>
