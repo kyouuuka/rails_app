@@ -14,10 +14,19 @@ class CommentsController < ApplicationController
     end
 end
 
-private
+def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+        redirect_back(fallback_location: root_path)
+    else
+        flash.now[:alert] = 'コメント削除に失敗しました'
+        render insta_path(@insta)
+    end
+end
 
+private
     def comment_params
-        params.require(:comment).permit(:content)
+        params.require(:comment).permit(:content).merge(user_id: current_user.id, insta_id: params[:insta_id])
     end
 end
 

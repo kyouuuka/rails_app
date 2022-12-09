@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   end
   post 'instas//:insta_id/comments' => 'comments#create', as: 'instum_comments'
   resources :relationships, only: [:create, :destroy]
+  resources :posts do  
+    resources :comments, only: [:create, :destroy] 
+  end
 end

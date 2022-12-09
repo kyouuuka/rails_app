@@ -4,6 +4,7 @@ class InstasController < ApplicationController
     def index
         @instas = Insta.all
         @comment = Comment.new
+        @rank_instas = Insta.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}
         if params[:search] == nil
             @instas= Insta.all
         elsif params[:search] == ''

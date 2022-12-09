@@ -2,35 +2,35 @@
 <h3>詳細</h3>
 <div class="insta">
     <p><%= @insta.body %></p>
-    <p><%= @insta.created_at %></p>
     <a href="/users/<%= @insta.user.id %>"><%= @insta.user.name %></a>
     <div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
-    </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [@insta, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
+      <% @comments.each do |c| %>
+      <div>
+        <%= c.user.email unless c.user.blank? %>
+        <br>
+        <%= c.content %>
+      </div>
+      <% if user_signed_in? && current_user.id == c.user_id %>
+        <%=button_to "削除", post_comment_path(c.insta.id, c.id), method: :delete %>
       <% end %>
-    <% end %>
-  <% end %>
-</div>
+      <br>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= form_with(model: [@insta, @comment], local: true) do |f| %>
+          <%= f.text_area :content %>
+          <%= button_tag type: "submit" do %>
+            <i class="far fa-comments"></i> コメントする
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
     <% if user_signed_in? %>
         <% if current_user.already_liked?(@insta) %>
             <%= link_to insta_like_path(@insta), method: :delete do %>
                 <i class="fas fa-heart"></i><%= @insta.likes.count %>           
             <% end %>
         <% else %>
-            <%= link_to insta_likes_path(@insta), method: :post do %>
+            <%= link_to insta_likes_path(@insta), method: :insta do %>
                 <i class="far fa-heart"></i><%= @insta.likes.count %>            
             <% end %>
         <% end %>

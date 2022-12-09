@@ -1,20 +1,11 @@
-<h1>users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
-<div class="gazou">
-    <%= image_tag @user.image_url, size: "250x200" if @user.image? %>
-</div>
-<%= render "relationships/follow_button", user: @user %>
+    <h1>users#show</h1>
+    <p>名前 : <%= @user.name %></p>
+    <p>メールアドレス : <%= @user.email %></p>
+    <p>プロフィール : <%= @user.profile %></p>
+    <%= image_tag @user.icon_url, class:"gazou", size: "250x200" if @user.icon? %>
+    <%= render "relationships/follow_button", user: @user %>
+    <%= link_to "投稿一覧に戻る", instas_path %>
 
-<% if current_user.id == @user.id %>
-    <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
-
-<h2>ユーザーの投稿一覧</h2>
-<% @user.instas.each do |t| %>
-    <%= t.user.name %>
-    <%= t.body %>
-<% end %>
-
-<%= link_to "投稿一覧に戻る", instas_path %>
+    <% if current_user.id == @user.id %>
+        <%= link_to "編集する", edit_user_registration_path %>
+    <% end %>
