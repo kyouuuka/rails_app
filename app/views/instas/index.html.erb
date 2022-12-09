@@ -1,18 +1,17 @@
 <div class="search">
-    <h3>検索</h3>
     <%= form_tag({controller:"instas",action:"index"}, method: :get) do %>
-        <%= text_field_tag :search %>
+        <%= text_field_tag :search , "検索" %>
         <%= submit_tag '検索する'  %>
     <% end %>
 </div>
 <div class="instas-container container">
     <div class="row">
-        <div class="col-sm-3 col-12">
-            <h3>投稿一覧</h3>
+        <div class="col-12">
+            <p>投稿一覧</p>
                 <% @instas.each do |t| %>
                     <div class="insta">
                         <%= image_tag t.image_url, size: "250x200" if t.image? %>
-                        <%= image_tag t.user.image_url, size: "100x100" if t.user.image? %>
+                            <%= image_tag t.user.icon_url, class: 'icon', size: "100x100" if t.user.icon? %>
                         <div class="main-box">
                             <div class="left-container"><%= t.body %></div>
                             <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>

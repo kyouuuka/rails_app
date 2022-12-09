@@ -3,11 +3,26 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .search{
-    width: 600px;
-    height: 300px;
+    margin-top: 5%;
+    margin-left: 5%;
 }
-.row{
-    text-align: center;
+input[type="search"] {
+    width: 60%;
+    height: 40%;
+    border-bottom:solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: #cbcfd0;
+}
+.icon{
+    border-radius: 60%;
 }
 .instas-container{
+    display: flex;
+    justify-content: center;
+    p{
+        font-size: 25px;
+        text-align: center;
+    }
 }
