@@ -6,38 +6,39 @@
 </div>
 <div class="instas-container container">
     <div class="row">
-        <div class="col-12">
-            <p>投稿一覧</p>
-                <% @rank_instas.each do |t| %>
+            <% @rank_instas.each do |t| %>
+                <div class="col-sm-6 col-12">
                     <div class="insta">
-                        <%= image_tag t.image_url, size: "250x200" if t.image? %>
+                        <div class="card" style="width: 18rem;">
+                            <%= image_tag t.image_url, size: "250x200" if t.image? %>
                             <%= image_tag t.user.icon_url, class: 'icon', size: "100x100" if t.user.icon? %>
-                        <div class="main-box">
-                            <div class="left-container"><%= t.body %></div>
-                            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-                            <% if user_signed_in? %>
-                                <% if current_user.already_liked?(t) %>
-                                    <%= link_to insta_like_path(id: t.id, insta_id: t.id), method: :delete do %>
-                                        <i class="fas fa-heart"></i><%= t.likes.count %>                   
+                            <div class="main-box">
+                                <div class="left-container"><%= t.body %></div>
+                                <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+                                <% if user_signed_in? %>
+                                    <% if current_user.already_liked?(t) %>
+                                        <%= link_to insta_like_path(id: t.id, insta_id: t.id), method: :delete do %>
+                                            <i class="fas fa-heart"></i><%= t.likes.count %>                   
+                                        <% end %>
+                                    <% else %>
+                                        <%= link_to insta_likes_path(id: t.id, insta_id: t.id), method: :post do %>
+                                            <i class="far fa-heart"></i><%= t.likes.count %>                    
+                                        <% end %>
                                     <% end %>
                                 <% else %>
-                                    <%= link_to insta_likes_path(id: t.id, insta_id: t.id), method: :post do %>
-                                        <i class="far fa-heart"></i><%= t.likes.count %>                    
-                                    <% end %>
+                                    <i class="far fa-heart"></i><%= t.likes.count %>           
                                 <% end %>
-                            <% else %>
-                                <i class="far fa-heart"></i><%= t.likes.count %>           
-                            <% end %>
-                                <%= link_to "詳細", insta_path(t.id) %>
-                            <% if user_signed_in? && current_user.id == t.user_id %>
-                                <%= link_to "編集", edit_insta_path(t.id) %>
-                                <%= link_to "削除", insta_path(t.id), method: :delete %>
-                            <% end %>   
+                                    <%= link_to "詳細", insta_path(t.id) %>
+                                <% if user_signed_in? && current_user.id == t.user_id %>
+                                    <%= link_to "編集", edit_insta_path(t.id) %>
+                                    <%= link_to "削除", insta_path(t.id), method: :delete %>
+                                <% end %>  
+                            </div>
                         </div>
                     </div>
-                <% end %>
-            <% if user_signed_in? %>
-<% end %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
+
